@@ -1,9 +1,14 @@
 //Coins
-export const coinsList = (divisa) => dispatch =>{
+export const coinsList = (divisa,cat='',limit=100,offset=1) => dispatch =>{
+    let category = ''
     if(divisa === ''){
         divisa = 'usd'
     }
-    fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${divisa}&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`)
+    if(cat !==''){
+        category = `category=${cat}&`
+    }
+    
+    fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${divisa}&${category}order=market_cap_desc&per_page=${limit}&page=${offset}&sparkline=true&price_change_percentage=1h%2C24h%2C7d`)
     .then( response => response.json())
     .then(data =>
         dispatch({

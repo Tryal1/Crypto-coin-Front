@@ -2,28 +2,18 @@ import { useEffect, useRef, useState} from "react";
 import { Centrar } from "./styled";
 import TableData from "./table";
 import { useDispatch, useSelector } from "react-redux";
-import { coinsList, Divisas, loginUser, OHLC, SetDivisa } from "../reducer/action";
+import { coinsList, Divisas, SetDivisa } from "../reducer/action";
 import SearchBar from "./searchBar";
-import { actualizarUsuario, crearUsuario,borrarUsuario } from "./api-call";
+import HamburgerBar from "./hamburgerbar";
 
 const Home = () =>{
     const dispatch = useDispatch();
     const [render, setRender] = useState(1)
-    const [Login, setLogin] = useState({email:'thomascarreno02@gmail.com',password:'thomas'})
-    const [Usuario, setUsuario] = useState({name:'toto',email:'toto@gmail.com',password:'123456',rol:'USER_ROLE'})
-    const [actUser,setActUser] = useState({name:'thomas',password:'thomas'})
     const divisas = useSelector(e=>e.divisas)
-    const id = useSelector(e=>e.user.uid)
     const renderizar = () =>{
       setRender(render*-1)
     }
 
-    const handleClick = async (e) =>{
-        e.preventDefault()
-        dispatch(loginUser(Login))
-        // const data = await actualizarUsuario(actUser,id)
-        // console.log(data)
-    }
 
     useEffect(()=>{
         dispatch(coinsList(divisas));
@@ -33,7 +23,6 @@ const Home = () =>{
     
     return(
         <Centrar>
-            <button onClick={handleClick}>Login</button>
             <SearchBar/>
            <TableData setRender={renderizar}/>
         </Centrar>

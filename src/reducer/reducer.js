@@ -1,4 +1,4 @@
-var estado
+var estado = false
 
 const intialState = {
     allCoins: [],
@@ -13,7 +13,7 @@ const intialState = {
 const Reducer = (state = intialState, {type, payload}) =>{
     switch(type){
         case "SET_USER":
-            const {estado,google,rol,...rest} = payload.usuario
+            const {google,rol,...rest} = payload.usuario
             console.log(rest)
             return{
                 ...state,

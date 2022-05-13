@@ -202,9 +202,11 @@ export const ContenedorGrafico = styled.div`
 
 export const Barra = styled.div`
     display: flex;
-    flex-direction: column;
-    align-items: end;
-   
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+    width:65%;
+    margin:auto;
     .DivEnd{
         display:flex;
         flex-direction:column;
@@ -245,5 +247,50 @@ export const Barra = styled.div`
         margin: 10px;
         font-size: 18px;
         text-transform: capitalize;
+    }
+`
+
+//Hamburguer bar
+export const DivBar = styled.div`
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: #A7A7A7;
+    top:0px;
+    left: -300px;
+    transition: all 500ms linear;
+    ul,li {
+        color: rgba(230, 230, 230, .9);
+        list-style: none;
+        padding: 15px 10px;
+        border-bottom: 1px solid rgba(100, 100, 100, .3);
+        text-align: center;
+    }
+    .toggle-btn {
+        position: absolute;
+        left: 230px;
+        top: 20px;
+        cursor: pointer;
+    }
+    .toggle-btn span {
+        display: block;
+        width: 40px;
+        text-align: center;
+        font-size: 30px;
+        border: 3px solid #000;
+    }
+    &.active{
+        top:0px;
+        left:0px;
+    }
+`
+
+export const ImageBar = styled.img`
+    
+    display: block;
+    margin: 0 auto; 
+    
+    :hover{
+        cursor:pointer;
     }
 `
