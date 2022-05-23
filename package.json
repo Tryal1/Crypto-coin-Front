@@ -21,6 +21,7 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.5",
+    "formik": "^2.2.9",
     "web-vitals": "^2.1.4",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",

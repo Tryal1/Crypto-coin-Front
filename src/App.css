@@ -1,3 +1,8 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 .flex{
     display: flex;
     align-items: center;
@@ -75,4 +80,110 @@
 .flex-container > div {
   width: 100%;
   height: 500px;
+}
+
+
+/* POP UP */
+
+.popUp-container {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popUp {
+  position: relative;
+  width: 25%;
+  /* width: 480px; */
+  width: 400px;
+  height: 55%;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: all 0.3s linear;
+}
+
+.popUp-close {
+  transform: perspective(50px) translateZ(-100px);
+}
+
+.close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  text-align: center;
+  width: 25px;
+  height: 25px;
+  color: #fff;
+  line-height: 25px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: rgb(230, 16, 16);
+}
+
+/* Formulario */
+
+.contenedor-de-cmapos{
+  padding: 25px 0;
+}
+
+.formulario {
+  width: 90%;
+  padding: 30px 0;
+  margin: auto;
+  text-align: center;
+}
+
+.formulario legend {
+  text-align: center;
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.formulario p {
+  padding: 15px 0;
+  cursor: pointer;
+}
+
+.campo {
+  margin-bottom: 25px;
+}
+
+.imput-text {
+  width: 90%;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid rgb(150, 150, 150);
+  padding: 15px;
+}
+
+.enviar {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.btn {
+  border-radius: 6px;
+  padding: 11px;
+  width: 110px;
+  border: none;
+  background-color: rgb(255, 181, 43);
+  cursor: pointer;
+}
+
+
+.visible{
+  opacity: 1;
+  visibility: visible;
 }

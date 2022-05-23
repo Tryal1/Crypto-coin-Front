@@ -36,6 +36,17 @@ export const filtroCrypto = (payload) => {
     }
 }
 
+export const categoryCoin = () => dispatch =>{
+    fetch(`https://api.coingecko.com/api/v3/coins/categories/list`)
+    .then(response => response.json())
+    .then(data => 
+        dispatch({
+            type: "GET_CATEGORY",
+            payload: data
+        }))
+        .catch(err => console.log(err))
+}
+
 
 //Divisas
 export const Divisas = () => dispatch =>{
@@ -70,6 +81,7 @@ export const OHLC = (coin,currency,day) => dispatch =>{
 //Back
 
 export const loginUser = (user) => dispatch =>{
+    console.log(user)
     fetch('http://localhost:4000/auth/login',{
         method:"POST",
         body:JSON.stringify({email:user.email,password:user.password}),

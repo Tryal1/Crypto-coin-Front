@@ -3,6 +3,7 @@ var estado = false
 const intialState = {
     allCoins: [],
     coins: [],
+    category: [],
     divisas:'',
     alldivisas:[],
     info: [],
@@ -24,6 +25,11 @@ const Reducer = (state = intialState, {type, payload}) =>{
                 ...state,
                 allCoins: payload,
                 coins: payload,
+            }
+        case "GET_CATEGORY":
+            return{
+                ...state,
+                category: payload
             }
         case "GET_INFO":
             return{
