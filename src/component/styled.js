@@ -219,6 +219,13 @@ export const Barra = styled.div`
 
   .barraDerecha {
     justify-content: end;
+    @media(max-width:768px){
+      display:none;
+    }
+  
+  }
+  .leftActive{
+    display:flex;
   }
 
   .barraIzquierda {
@@ -240,6 +247,12 @@ export const Barra = styled.div`
     option {
       color: #000;
     }
+  }
+
+  @media(max-width:768px){
+    display:flex;
+    flex-direction:column;
+    gap:2rem;
   }
 `;
 
@@ -291,50 +304,7 @@ export const LogIn = styled.a`
   cursor: pointer;
 `;
 
-//Hamburguer bar
-export const DivBar = styled.div`
-  position: fixed;
-  width: 300px;
-  height: 100%;
-  background: #a7a7a7;
-  top: 0px;
-  left: -300px;
-  transition: all 500ms linear;
-  ul,
-  li {
-    color: rgba(230, 230, 230, 0.9);
-    list-style: none;
-    padding: 15px 10px;
-    border-bottom: 1px solid rgba(100, 100, 100, 0.3);
-    text-align: center;
-  }
-  .toggle-btn {
-    position: absolute;
-    left: 230px;
-    top: 20px;
-    cursor: pointer;
-  }
-  .toggle-btn span {
-    display: block;
-    width: 40px;
-    text-align: center;
-    font-size: 30px;
-    border: 3px solid #000;
-  }
-  &.active {
-    top: 0px;
-    left: 0px;
-  }
-`;
 
-export const ImageBar = styled.img`
-  display: block;
-  margin: 0 auto;
-
-  :hover {
-    cursor: pointer;
-  }
-`;
 
 // Filtros
 

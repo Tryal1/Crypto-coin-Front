@@ -27,6 +27,7 @@ const Reducer = (state = intialState, {type, payload}) =>{
                 coins: payload,
             }
         case "GET_CATEGORY":
+            console.log(payload)
             return{
                 ...state,
                 category: payload

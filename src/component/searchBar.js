@@ -2,15 +2,13 @@ import { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { SetDivisa } from "../reducer/action";
-import HamburgerBar from "./hamburgerbar";
 import FormLogin from "./login";
 import Register from "./register";
-import { Barra, BarraContainer, DropDown, ImageBar } from "./styled";
+import { Barra, BarraContainer, DropDown } from "./styled";
 
 const SearchBar = () => {
   const [display, setDisplay] = useState(false);
   const [search, setSearch] = useState("");
-  const [img, setimg] = useState(true);
   const [darkActive, setDarkActive] = useState(true);
 
   const dispatch = useDispatch();
@@ -18,7 +16,7 @@ const SearchBar = () => {
   const alldivisas = useSelector((e) => e.alldivisas);
 
   const avtiveSearch = useRef();
-  const activo = useRef();
+  const leftActive = useRef();
 
   const update = (coin) => {
     setSearch(coin);
@@ -32,9 +30,8 @@ const SearchBar = () => {
     setDarkActive(!darkActive);
   };
 
-  const lateralsalir = () => {
-    activo.current?.classList.toggle("active");
-    setimg(!img);
+  const leftBar = () => {
+    leftActive.current?.classList.toggle("leftActive");
   };
 
   const searchLupa = () => {
@@ -45,9 +42,6 @@ const SearchBar = () => {
     <BarraContainer>
       <Barra>
         <div className="barraIzquierda">
-          <div className="toggle-btn" onClick={lateralsalir}>
-            <ImageBar src="hamburge.png" alt="Logo Fazt" className="logo" />
-          </div>
           <h1>Crypto Coin</h1>
           <div>
             <select onClick={(e) => handleType(e.target.value)}>
@@ -61,8 +55,11 @@ const SearchBar = () => {
                 : null}
             </select>
           </div>
+          <div className="toggle-btn" onClick={leftBar}>
+            <img src="hamburge.png" alt="Logo Fazt" className="logo" />
+          </div>
         </div>
-        <div className="barraDerecha">
+        <div className="barraDerecha" ref={leftActive}>
           <FormLogin />
           <Register />
           <div>
@@ -115,7 +112,6 @@ const SearchBar = () => {
               </div>
             </div>
           </DropDown>
-          <HamburgerBar activo={activo} />
         </div>
       </Barra>
     </BarraContainer>
