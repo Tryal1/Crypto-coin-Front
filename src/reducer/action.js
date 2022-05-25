@@ -96,3 +96,13 @@ export const loginUser = (user) => dispatch =>{
         .then(data => window.localStorage.setItem('x-token',data.payload.token))
         .catch(err =>console.log(err))
 }
+
+export const registerUser = async (user) =>{
+    const res = await fetch('http://localhost:4000/usuarios',{
+            method:"POST",
+            body:JSON.stringify({name:user.name,email:user.email,password:user.password,rol:user.rol}),
+            headers:{'Content-Type':'application/json'}
+        })
+        const data = await res.json()
+        return data
+}

@@ -1,35 +1,36 @@
-import { useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 import { Centrar } from "./styled";
 import TableData from "./table";
 import { useDispatch, useSelector } from "react-redux";
 import { coinsList, Divisas, SetDivisa } from "../reducer/action";
 import SearchBar from "./searchBar";
 import HamburgerBar from "./hamburgerbar";
+import Filtros from "./filtros";
 
-const Home = () =>{
-    const dispatch = useDispatch();
-    const [render, setRender] = useState(1)
-    const divisas = useSelector(e=>e.divisas)
-    const renderizar = () =>{
-      setRender(render*-1)
-    }
+const Home = () => {
+  const dispatch = useDispatch();
+  const [render, setRender] = useState(1);
+  const divisas = useSelector((e) => e.divisas);
+  const renderizar = () => {
+    setRender(render * -1);
+  };
 
+  useEffect(() => {
+    dispatch(coinsList(divisas));
+    dispatch(Divisas());
+    dispatch(SetDivisa(divisas));
+  }, [dispatch, divisas]);
 
-    useEffect(()=>{
-        dispatch(coinsList(divisas));
-        dispatch(Divisas())
-        dispatch(SetDivisa(divisas))
-    },[dispatch,divisas])
-    
-    return(
-        <Centrar>
-            <SearchBar/>
-           <TableData setRender={renderizar}/>
-        </Centrar>
-    );
-}
+  return (
+    <Centrar>
+      <SearchBar />
+      <Filtros/>
+      <TableData setRender={renderizar} />
+    </Centrar>
+  );
+};
 
-export default Home
+export default Home;
 //https://api.coinconvert.net/convert/eth/usd?amount=2 convert
 
 //https://api.coingecko.com/api/v3/simple/supported_vs_currencies   divisas

@@ -4,7 +4,6 @@ import { categoryCoin } from "../reducer/action"
 import { ImageBar,DivBar } from "./styled"
 
 const HamburgerBar = ({activo}) =>{
-    const [Usuario, setUsuario] = useState({name:'toto',email:'toto@gmail.com',password:'123456',rol:'USER_ROLE'})
     const [actUser,setActUser] = useState({name:'thomas',password:'thomas'})
     const id = useSelector(e=>e.user.uid)
     const category = useSelector(e=>e.category)

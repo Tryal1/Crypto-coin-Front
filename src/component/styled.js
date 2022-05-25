@@ -198,20 +198,52 @@ export const BarraContainer = styled.div`
 
 export const Barra = styled.div`
   width: 85%;
+  margin: auto;
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   align-items: center;
-  gap: 2rem;
   padding: 13px 0;
+
   img {
     width: 16px;
     heigth: 16px;
-    cursor:pointer;
+    cursor: pointer;
+  }
+
+  .barraDerecha,
+  .barraIzquierda {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .barraDerecha {
+    justify-content: end;
+  }
+
+  .barraIzquierda {
+    option,
+    select {
+    }
+    h1 {
+      color: #fff;
+      margin: 0;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    select {
+      border: none;
+      background: none;
+      outline: none;
+      color: #fff;
+    }
+    option {
+      color: #000;
+    }
   }
 `;
 
 export const DropDown = styled.div`
-
   position: relative;
   .dropMenu {
     background-color: #fff;
@@ -250,15 +282,14 @@ export const DropDown = styled.div`
 // LOGIN
 
 export const LogIn = styled.a`
-  color:#fff;
-  text-decoration:none;
-  font-size:14px;
-  :hover{
-      color:#fff;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  :hover {
+    color: #fff;
   }
-  cursor:pointer;
-`
-
+  cursor: pointer;
+`;
 
 //Hamburguer bar
 export const DivBar = styled.div`
@@ -304,3 +335,51 @@ export const ImageBar = styled.img`
     cursor: pointer;
   }
 `;
+
+// Filtros
+
+export const FiltrosContainer = styled.div`
+  width:70%;
+  padding: 50px 0;
+  display: flex;
+  flex-direction:column;
+  gap: 2rem;
+  margin:auto;
+  .ulContainer{
+    position:relative;
+  }
+
+  .ulFiltros{
+    list-style:none;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: absolute;
+    padding:0;
+    left:0;
+    top: calc(100% + .25rem);
+    background-color:#fff;
+    border: 1px solid #d9dde2;
+    border-radius:5px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all .2s linear;
+
+    li{
+      margin:10px;
+      cursor:pointer;
+    }
+  }
+
+  .active{
+    opacity: 1;
+    visibility: visible;
+  }
+`;
+
+export const ButtonFiltro = styled.button`
+  border: 1px solid #d9dde2;
+  border-radius:15px;
+  padding: 2px 15px;
+`
