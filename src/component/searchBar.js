@@ -42,7 +42,7 @@ const SearchBar = () => {
     <BarraContainer>
       <Barra>
         <div className="barraIzquierda">
-          <h1>Crypto Coin</h1>
+          <a href='/'><h1>Crypto Coin</h1></a>
           <div>
             <select onClick={(e) => handleType(e.target.value)}>
               <option value="usd">USD</option>

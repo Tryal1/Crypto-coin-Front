@@ -140,14 +140,17 @@ export const MarketInfo = styled.div`
   display: grid;
   margin-top: 40px;
   grid-template-columns: repeat(3, 1fr);
+  @media(max-width:768px){
+    display:block;
+  }
 `;
 export const CardDataPrice = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: start;
   border-right: 1px solid black;
   width: 220px;
   height: 150px;
+  margin:auto;
   h3 {
     color: #9aa2b1;
     margin-top: 0;
@@ -156,6 +159,12 @@ export const CardDataPrice = styled.div`
     margin-top: 0;
     color: #414542;
     font-weight: 700;
+  }
+  @media(max-width:768px){
+    border-right:none;
+    border-bottom: 1px solid black;
+    justify-content: center;
+    align-items: center;
   }
 `;
 export const Supply = styled.div`
@@ -247,13 +256,25 @@ export const Barra = styled.div`
     option {
       color: #000;
     }
+    a{
+      text-decoration:none;
+    }
+  }
+  .toggle-btn{
+    opacity:0;
+    visibility:hidden;
   }
 
   @media(max-width:768px){
     display:flex;
     flex-direction:column;
     gap:2rem;
+    .toggle-btn{
+      opacity:1;
+      visibility:visible;
+    }
   }
+
 `;
 
 export const DropDown = styled.div`

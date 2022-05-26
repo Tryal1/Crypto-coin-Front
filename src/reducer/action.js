@@ -1,5 +1,6 @@
 //Coins
 export const coinsList = (divisa,cat='',limit=100,offset=1) => dispatch =>{
+    console.log(cat)
     let category = ''
     if(divisa === ''){
         divisa = 'usd'
@@ -45,6 +46,13 @@ export const categoryCoin = () => dispatch =>{
             payload: data
         }))
         .catch(err => console.log(err))
+}
+
+export const SetCategory = (payload) => {  
+    return {
+        type:"GET_FILTERCATEGORY",
+        payload:payload
+    }
 }
 
 

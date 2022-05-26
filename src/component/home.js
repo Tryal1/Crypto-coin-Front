@@ -10,15 +10,16 @@ const Home = () => {
   const dispatch = useDispatch();
   const [render, setRender] = useState(1);
   const divisas = useSelector((e) => e.divisas);
+  const categoria = useSelector(e=>e.setCategory)
   const renderizar = () => {
     setRender(render * -1);
   };
 
   useEffect(() => {
-    dispatch(coinsList(divisas));
+    dispatch(coinsList(divisas,categoria));
     dispatch(Divisas());
     dispatch(SetDivisa(divisas));
-  }, [dispatch, divisas]);
+  }, [dispatch, divisas,categoria]);
 
   return (
     <Centrar>
