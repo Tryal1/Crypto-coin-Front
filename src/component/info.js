@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Divisas, searchCoin, SetDivisa } from "../reducer/action"
+import Convert from "./convert";
 import Graficos from "./graficos";
 import SearchBar from "./searchBar";
 import { ContenedorInfo,DivContainerInfo,MarketInfo,PorcenSpan,SimboloSpan,CardDataPrice, Supply,ContenedorGrafico, Contenedor} from "./styled";
@@ -71,8 +72,9 @@ const Info = () =>{
                     <div>
                         <Graficos chartID="pie-two" coin={id} currency={divisas} day={1}/>
                     </div>
+                    <Convert/>
                 </div>
-                <div style={{backgroundColor:'#1e1e1e',borderRadius:'10px',padding:'15px',marginBottom:'100px'}}>
+                <div style={{backgroundColor:'#f3f4f6',borderRadius:'10px',padding:'15px',marginBottom:'100px'}}>
                     <h2>{coin.name} general information</h2>
                 <Supply style={{margin:'auto'}}>
                     {/* Today */}

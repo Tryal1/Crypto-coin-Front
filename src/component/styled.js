@@ -140,8 +140,8 @@ export const MarketInfo = styled.div`
   display: grid;
   margin-top: 40px;
   grid-template-columns: repeat(3, 1fr);
-  @media(max-width:768px){
-    display:block;
+  @media (max-width: 768px) {
+    display: block;
   }
 `;
 export const CardDataPrice = styled.div`
@@ -150,7 +150,7 @@ export const CardDataPrice = styled.div`
   border-right: 1px solid black;
   width: 220px;
   height: 150px;
-  margin:auto;
+  margin: auto;
   h3 {
     color: #9aa2b1;
     margin-top: 0;
@@ -160,8 +160,8 @@ export const CardDataPrice = styled.div`
     color: #414542;
     font-weight: 700;
   }
-  @media(max-width:768px){
-    border-right:none;
+  @media (max-width: 768px) {
+    border-right: none;
     border-bottom: 1px solid black;
     justify-content: center;
     align-items: center;
@@ -228,13 +228,12 @@ export const Barra = styled.div`
 
   .barraDerecha {
     justify-content: end;
-    @media(max-width:768px){
-      display:none;
+    @media (max-width: 768px) {
+      display: none;
     }
-  
   }
-  .leftActive{
-    display:flex;
+  .leftActive {
+    display: flex;
   }
 
   .barraIzquierda {
@@ -256,25 +255,24 @@ export const Barra = styled.div`
     option {
       color: #000;
     }
-    a{
-      text-decoration:none;
+    a {
+      text-decoration: none;
     }
   }
-  .toggle-btn{
-    opacity:0;
-    visibility:hidden;
+  .toggle-btn {
+    opacity: 0;
+    visibility: hidden;
   }
 
-  @media(max-width:768px){
-    display:flex;
-    flex-direction:column;
-    gap:2rem;
-    .toggle-btn{
-      opacity:1;
-      visibility:visible;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .toggle-btn {
+      opacity: 1;
+      visibility: visible;
     }
   }
-
 `;
 
 export const DropDown = styled.div`
@@ -325,45 +323,43 @@ export const LogIn = styled.a`
   cursor: pointer;
 `;
 
-
-
 // Filtros
 
 export const FiltrosContainer = styled.div`
-  width:70%;
+  width: 70%;
   padding: 50px 0;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   gap: 2rem;
-  margin:auto;
-  .ulContainer{
-    position:relative;
+  margin: auto;
+  .ulContainer {
+    position: relative;
   }
 
-  .ulFiltros{
-    list-style:none;
-    display:grid;
+  .ulFiltros {
+    list-style: none;
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     position: absolute;
-    padding:0;
-    left:0;
-    top: calc(100% + .25rem);
-    background-color:#fff;
+    padding: 0;
+    left: 0;
+    top: calc(100% + 0.25rem);
+    background-color: #fff;
     border: 1px solid #d9dde2;
-    border-radius:5px;
+    border-radius: 5px;
 
     opacity: 0;
     visibility: hidden;
 
-    transition: all .2s linear;
+    transition: all 0.2s linear;
 
-    li{
-      margin:10px;
-      cursor:pointer;
+    li {
+      margin: 10px;
+      cursor: pointer;
     }
   }
 
-  .active{
+  .active {
     opacity: 1;
     visibility: visible;
   }
@@ -371,6 +367,29 @@ export const FiltrosContainer = styled.div`
 
 export const ButtonFiltro = styled.button`
   border: 1px solid #d9dde2;
-  border-radius:15px;
+  border-radius: 15px;
   padding: 2px 15px;
-`
+`;
+
+export const ContainerConvert = styled.div`
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-around;
+  background-color:#f3f4f6;
+  border-radius:10px;
+  p{
+    margin:0;
+    padding:10px;
+    background-color:#fff;
+    border-top-left-radius:10px;
+    border-bottom-left-radius:10px;
+    border-right:1px solid #000;
+  }
+  input{
+    padding:10px;
+    border:none;
+    border-top-right-radius:10px;
+    border-bottom-right-radius:10px;
+    outline:none;
+  }
+`;
