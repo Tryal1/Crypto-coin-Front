@@ -375,21 +375,26 @@ export const ContainerConvert = styled.div`
   padding: 20px 0;
   display: flex;
   justify-content: space-around;
-  background-color:#f3f4f6;
-  border-radius:10px;
-  p{
-    margin:0;
-    padding:10px;
-    background-color:#fff;
-    border-top-left-radius:10px;
-    border-bottom-left-radius:10px;
-    border-right:1px solid #000;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+`;
+
+export const Convert = styled.div`
+  display: flex;
+
+  select{
+    margin: 0;
+    padding: 10px;
+    background-color: #fff;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: 1px solid #000;
   }
-  input{
-    padding:10px;
-    border:none;
-    border-top-right-radius:10px;
-    border-bottom-right-radius:10px;
-    outline:none;
+  input {
+    padding: 10px;
+    border: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    outline: none;
   }
 `;

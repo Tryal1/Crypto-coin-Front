@@ -1,61 +1,65 @@
 import { useEffect, useState } from "react";
 import { ContainerConvert } from "./styled";
+import CurrencyRow from "./currencyRow";
 
-const Convert = () => {
-    const [cantidad, setCantidad] = useState();
-    const [data, setData] = useState();
-    let val1 = 'btc';
-    let val2 = 'eth';
-    let cambio = '';
+const Convert = ({coin}) => {
+  const [fromCurrency, setFromCurrency] = useState(''); //nombre moneda
+  const [toCurrency, setToCurrency] = useState('usd'); //nombre moneda
+  const [amount, setAmount] = useState(1);
+  const [exchangeRate, setExchangeRate] = useState();
+  const [amountInFromCurrency, setAmountInFromCurrency] = useState(true);
 
-    const change = () =>{
-        cambio = val1;
-        val1 = val2;
-        val2 = cambio;
-        console.log(val1, val2)
-    }
+  let fromAmount, toAmount;
 
-    const onchange = (e) =>{
-        setCantidad(e.target.value)
-        document.input2 = data.ETH
-    }
+  if (amountInFromCurrency) {
+    fromAmount = amount;
+    toAmount = amount * exchangeRate;
+  } else {
+    toAmount = amount;
+    fromAmount = amount / exchangeRate;
+  }
 
-    useEffect(()=>{
-        fetch(`https://api.coinconvert.net/convert/${val1}/${val2}?amount=${cantidad}`)
-        .then(response => response.json())
-        .then(data=>setData(data))
-    },[val1,val2,cantidad])
+  const Convertir = (fromCurrency, toCurrency, amount) => {
+    fetch(
+      `https://api.coinconvert.net/convert/${fromCurrency}/${toCurrency}?amount=${amount}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setExchangeRate(data[toCurrency.toUpperCase()]);
+      });
+  };
 
+  useEffect(() => {
+    setFromCurrency(coin)
+    Convertir(fromCurrency, toCurrency, amount);
+  }, [fromCurrency, toCurrency,coin]);
 
+  const handleFromAmountChange = (e) => {
+    setAmount(e.target.value);
+    setAmountInFromCurrency(true);
+  };
+
+  const handleToAmountChange = (e) => {
+    setAmount(e.target.value);
+    setAmountInFromCurrency(false);
+  };
   return (
     <ContainerConvert>
       <div className="flex">
-        <p>{val1}</p>
-        <input type='number' onChange={onchange}/>
+        <CurrencyRow
+          onChangeAmount={handleFromAmountChange}
+          amount={fromAmount}
+          onChangeCurrency={e => setFromCurrency(e.target.value)}
+          selectedCurrency={fromCurrency}
+        />
       </div>
-      <button onClick={change}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-arrows-left-right"
-          width="44"
-          height="44"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="#2c3e50"
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path stroke="none" d="M0 0h24v24H0z" fill="none" border='0' />
-          <line x1="21" y1="17" x2="3" y2="17" />
-          <path d="M6 10l-3 -3l3 -3" />
-          <line x1="3" y1="7" x2="21" y2="7" />
-          <path d="M18 20l3 -3l-3 -3" />
-        </svg>
-      </button>
       <div className="flex">
-        <p>{val2}</p>
-        <input type='number' name="input2"/>
+        <CurrencyRow
+          onChangeAmount={handleToAmountChange}
+          amount={toAmount}
+          onChangeCurrency={e => setToCurrency(e.target.value)}
+          selectedCurrency={toCurrency}
+        />
       </div>
     </ContainerConvert>
   );
