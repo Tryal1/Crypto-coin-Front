@@ -382,7 +382,7 @@ export const ContainerConvert = styled.div`
 export const Convert = styled.div`
   display: flex;
 
-  select{
+  select {
     margin: 0;
     padding: 10px;
     background-color: #fff;
@@ -396,5 +396,57 @@ export const Convert = styled.div`
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     outline: none;
+  }
+`;
+
+// Account
+
+export const AcountContainer = styled.div`
+  position: relative;
+
+  .account {
+    background-color: #fff;
+    position: absolute;
+    left: -150px;
+    top: 157%;
+    width:250px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease-out;
+    flex-direction:column;
+    justify-content: space-between;
+    padding:10px;
+    gap:1rem;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .accountUser{
+    gap:2rem;
+    width:100%;
+    justify-content: space-between;
+    img{
+      width:60px;
+      heigth:60px;
+    }
+    h3{
+      font-size:15px;
+    }
+  }
+
+  .accountEnlaces{
+    width:100%;
+    flex-direction:column;
+    align-items:start;
+    gap:.5rem;
+    a{
+      text-decoration:none;
+      color:#000;
+      font-size:14px;
+    }
+  }
+
+  .active{
+    opacity: 1;
+    visibility: visible;
   }
 `;

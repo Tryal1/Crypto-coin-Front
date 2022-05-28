@@ -89,7 +89,6 @@ export const OHLC = (coin,currency,day) => dispatch =>{
 //Back
 
 export const loginUser = (user) => dispatch =>{
-    console.log(user)
     fetch('http://localhost:4000/auth/login',{
         method:"POST",
         body:JSON.stringify({email:user.email,password:user.password}),
@@ -101,7 +100,7 @@ export const loginUser = (user) => dispatch =>{
             type:'SET_USER',
             payload: data
         }))
-        .then(data => window.localStorage.setItem('x-token',data.payload.token))
+        .then(data => window.localStorage.setItem('xtoken',data.payload.token))
         .catch(err =>console.log(err))
 }
 
@@ -113,4 +112,11 @@ export const registerUser = async (user) =>{
         })
         const data = await res.json()
         return data
+}
+
+export const getUser = (uid) =>{
+    fetch(`http://localhost:4000/usuarios/${uid}`,{
+    })
+    .then(response =>response.json())
+    .then(data =>{return data})
 }

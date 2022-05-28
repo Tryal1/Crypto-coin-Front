@@ -5,7 +5,7 @@
 //             headers:{'Content-Type':'application/json'}
 //         })
 //         const data = await res.json()
-//         window.localStorage.setItem('x-token',data.token)
+//         window.localStorage.setItem('xtoken',data.token)
 // }
 
 // export const crearUsuario = async (user) =>{

@@ -5,7 +5,6 @@ import { loginUser } from "../reducer/action";
 import { LogIn } from "./styled";
 
 const FormLogin = () => {
-  const [Login, setLogin] = useState({ email: "", password: "" });
   const popUpClose = useRef();
   const visible = useRef();
   const dispatch = useDispatch();
@@ -34,8 +33,7 @@ const FormLogin = () => {
           <Formik
             initialValues={{ email: "", password: "" }}
             onSubmit={(values) => {
-              setLogin({ email: values.email, password: values.password });
-              dispatch(loginUser(Login))
+              dispatch(loginUser({ email: values.email, password: values.password }))
             }}
           >
             <Form className="formulario">

@@ -182,8 +182,6 @@
   background-color: rgb(255, 181, 43);
   cursor: pointer;
 }
-
-
 .visible{
   opacity: 1;
   visibility: visible;

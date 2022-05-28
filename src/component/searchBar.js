@@ -5,6 +5,7 @@ import { SetDivisa } from "../reducer/action";
 import FormLogin from "./login";
 import Register from "./register";
 import { Barra, BarraContainer, DropDown } from "./styled";
+import User from "./user";
 
 const SearchBar = () => {
   const [display, setDisplay] = useState(false);
@@ -42,7 +43,9 @@ const SearchBar = () => {
     <BarraContainer>
       <Barra>
         <div className="barraIzquierda">
-          <a href='/'><h1>Crypto Coin</h1></a>
+          <a href="/">
+            <h1>Crypto Coin</h1>
+          </a>
           <div>
             <select onClick={(e) => handleType(e.target.value)}>
               <option value="usd">USD</option>
@@ -60,8 +63,15 @@ const SearchBar = () => {
           </div>
         </div>
         <div className="barraDerecha" ref={leftActive}>
-          <FormLogin />
-          <Register />
+          {window.localStorage.xtoken ? (
+            <User />
+          ) : (
+            <>
+              <FormLogin />
+              <Register />
+            </>
+          )}
+
           <div>
             {darkActive ? (
               <img src="luna.png" onClick={ActiveDark} />
