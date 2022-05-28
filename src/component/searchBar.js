@@ -2,10 +2,10 @@ import { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { SetDivisa } from "../reducer/action";
-import FormLogin from "./login";
-import Register from "./register";
+import FormLogin from "./user/login";
+import Register from "./user/register";
 import { Barra, BarraContainer, DropDown } from "./styled";
-import User from "./user";
+import User from "./user/user";
 
 const SearchBar = () => {
   const [display, setDisplay] = useState(false);

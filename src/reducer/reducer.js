@@ -15,8 +15,7 @@ const intialState = {
 const Reducer = (state = intialState, { type, payload }) => {
   switch (type) {
     case "SET_USER":
-      const { google, rol, ...rest } = payload.usuario;
-      console.log(rest);
+      const { google, rol, ...rest } = payload;
       return {
         ...state,
         user: rest,

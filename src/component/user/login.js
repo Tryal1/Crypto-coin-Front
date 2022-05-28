@@ -1,12 +1,13 @@
 import { Field, Form, Formik } from "formik";
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { loginUser, registerUser } from "../reducer/action";
-import { LogIn } from "./styled";
+import { loginUser } from "../../reducer/action";
+import { LogIn } from "../styled";
 
-const Register = () => {
+const FormLogin = () => {
   const popUpClose = useRef();
   const visible = useRef();
+  const dispatch = useDispatch();
 
   const open = () => {
     popUpClose.current.classList.toggle("popUp-close");
@@ -21,12 +22,7 @@ const Register = () => {
 
   return (
     <div>
-      <LogIn onClick={open}>
-        <span>
-          <img src="register.png" />
-        </span>{" "}
-        Register
-      </LogIn>
+      <LogIn onClick={open}><span><img src="logIn.png"/></span> Log In</LogIn>
 
       <div className="popUp-container" ref={visible}>
         <div className="popUp popUp-close" ref={popUpClose}>
@@ -35,27 +31,14 @@ const Register = () => {
           </p>
 
           <Formik
-            initialValues={{
-              name: "",
-              email: "",
-              password: "",
-              rol: "USER_ROLE",
-            }}
+            initialValues={{ email: "", password: "" }}
             onSubmit={(values) => {
-              registerUser(values);
+              dispatch(loginUser({ email: values.email, password: values.password }))
             }}
           >
             <Form className="formulario">
-              <legend>Register</legend>
+              <legend>Login</legend>
               <div className="contenedor-de-cmapos">
-                <div className="campo">
-                  <Field
-                    type="name"
-                    name="name"
-                    placeholder="Name"
-                    className="imput-text"
-                  />
-                </div>
                 <div className="campo">
                   <Field
                     type="email"
@@ -75,15 +58,51 @@ const Register = () => {
               </div>
               <div className="enviar">
                 <button type="sumbit" className="btn">
-                  Register
+                  Login
                 </button>
               </div>
+              <p>¿Olvidaste tu Contraseña?</p>
+              <p>register</p>
             </Form>
           </Formik>
         </div>
       </div>
+
+      {/* <div className="popUp-container" ref={visible}>
+        <div className="popUp popUp-close" ref={popUpClose}>
+          <p className="close" onClick={close}>
+            X
+          </p>
+          <form className="formulario">
+            <legend>Login</legend>
+            <div className="contenedor-de-cmapos">
+              <div className="campo">
+                <input
+                  className="imput-text"
+                  type="email"
+                  placeholder="Email"
+                />
+              </div>
+              <div className="campo">
+                <input
+                  className="imput-text"
+                  type="password"
+                  placeholder="password"
+                />
+              </div>
+            </div>
+            <div className="enviar">
+              <button type="sumbit" className="btn">
+                Login
+              </button>
+            </div>
+            <p>¿Olvidaste tu Contraseña?</p>
+            <p>register</p>
+          </form>
+        </div>
+      </div> */}
     </div>
   );
 };
 
-export default Register;
+export default FormLogin;

@@ -21,7 +21,7 @@ const CoinsTable = ({coins}) =>{
                         <img className="img" src={coins.image}/>
                     </div>
                     <div className="contenido">
-                    <Link to={`/${coins.id}`}>{coins.name}</Link>                       
+                    <Link to={`/coin/${coins.id}`}>{coins.name}</Link>                       
                     </div>
                 </div>
             </Td>

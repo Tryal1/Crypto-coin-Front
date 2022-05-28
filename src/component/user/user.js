@@ -1,36 +1,36 @@
 import { useEffect, useRef, useState } from "react";
-import { getUser } from "../reducer/action";
-import { AcountContainer } from "./styled";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { getUser } from "../../reducer/action";
+import { AcountContainer } from "../styled";
 
 const User = () => {
   const [user, setUser] = useState();
   const active = useRef();
+  const dispatch = useDispatch();
   const activeUSer = () => {
     active.current.classList.toggle("active");
   };
 
-  const usuario = async () => {
-    const data = await getUser("62755c54d89b35a6a3db3058");
-    console.log(data);
-    setUser(data);
-  };
-
-  const func = () => {
+  const func = () => (dispatch) => {
     fetch(`http://localhost:4000/usuarios`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        'xtoken':localStorage.getItem('xtoken'),
+        xtoken: localStorage.getItem("xtoken"),
       },
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
+      .then((data) =>
+        dispatch({
+          type: "SET_USER",
+          payload: data,
+        })
+      );
   };
-  console.log(user)
+
   useEffect(() => {
-    func();
+    dispatch(func());
   }, []);
 
   const logOut = () => {
@@ -44,11 +44,11 @@ const User = () => {
       <div className="account flex" ref={active}>
         <div className="accountUser flex">
           <img src="usuario.png" />
-          <h3>Nombre Usuario</h3>
+          <h3>{user?.name?.toUpperCase()}</h3>
         </div>
         <div className="accountEnlaces flex">
           <a href="#">PortFolio</a>
-          <a href="#">Account Settings</a>
+          <Link to={`/user/${user?.name}`}>Account Settings</Link>
           <a href="#" onClick={logOut}>
             Log Out
           </a>
