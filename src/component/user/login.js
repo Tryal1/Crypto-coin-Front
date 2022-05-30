@@ -33,7 +33,16 @@ const FormLogin = () => {
           <Formik
             initialValues={{ email: "", password: "" }}
             onSubmit={(values) => {
-              dispatch(loginUser({ email: values.email, password: values.password }))
+              try{
+                dispatch(loginUser({ email: values.email, password: values.password }))
+                close()
+               setTimeout(() => {
+                  window.location.reload()
+               }, 300);
+              }catch(err){
+                console.log(err)
+              }
+              
             }}
           >
             <Form className="formulario">

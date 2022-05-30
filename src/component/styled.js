@@ -409,44 +409,57 @@ export const AcountContainer = styled.div`
     position: absolute;
     left: -150px;
     top: 157%;
-    width:250px;
+    width: 250px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
     transition: all 0.2s ease-out;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: space-between;
-    padding:10px;
-    gap:1rem;
+    padding: 10px;
+    gap: 1rem;
     opacity: 0;
     visibility: hidden;
   }
 
-  .accountUser{
-    gap:2rem;
-    width:100%;
+  .accountUser {
+    gap: 2rem;
+    width: 100%;
     justify-content: space-between;
-    img{
-      width:60px;
-      heigth:60px;
+    img {
+      width: 60px;
+      heigth: 60px;
     }
-    h3{
-      font-size:15px;
-    }
-  }
-
-  .accountEnlaces{
-    width:100%;
-    flex-direction:column;
-    align-items:start;
-    gap:.5rem;
-    a{
-      text-decoration:none;
-      color:#000;
-      font-size:14px;
+    h3 {
+      font-size: 15px;
     }
   }
 
-  .active{
+  .accountEnlaces {
+    width: 100%;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+    a {
+      text-decoration: none;
+      color: #000;
+      font-size: 14px;
+    }
+  }
+
+  .active {
     opacity: 1;
     visibility: visible;
+  }
+`;
+
+// acoutn user
+
+export const AccountUserContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap:3rem;
+  width:95%;
+  margin:20px auto;
+  div{
+    justify-content: space-between;
   }
 `;

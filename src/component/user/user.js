@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getUser } from "../../reducer/action";
 import { AcountContainer } from "../styled";
 
 const User = () => {
-  const [user, setUser] = useState();
   const active = useRef();
   const dispatch = useDispatch();
+  const user = useSelector(e=>e.user)
   const activeUSer = () => {
     active.current.classList.toggle("active");
   };
