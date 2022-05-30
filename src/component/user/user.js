@@ -40,10 +40,10 @@ const User = () => {
 
   return (
     <AcountContainer>
-      <img src="user.png" onClick={activeUSer} />
+      <img src="../user.png" onClick={activeUSer} />
       <div className="account flex" ref={active}>
         <div className="accountUser flex">
-          <img src="usuario.png" />
+          <img src="../usuario.png" />
           <h3>{user?.name?.toUpperCase()}</h3>
         </div>
         <div className="accountEnlaces flex">

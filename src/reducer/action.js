@@ -134,3 +134,15 @@ export const getUser = async (uid) => {
   const data = await res.json();
   return data;
 };
+
+export const actualizarUsuario = async (user, id) => {
+  console.log(user.name, user.password)
+  console.log(user)
+  const res = await fetch(`http://localhost:4000/usuarios/${id}`, {
+    method: "PUT",
+    body: JSON.stringify({ name: user.name, password: user.password }),
+    headers: { "Content-Type": "application/json" },
+  });
+  const data = await res.json();
+  return data;
+};

@@ -74,17 +74,17 @@ const SearchBar = () => {
 
           <div>
             {darkActive ? (
-              <img src="luna.png" onClick={ActiveDark} />
+              <img src="../luna.png" onClick={ActiveDark} />
             ) : (
-              <img src="sol.png" onClick={ActiveDark} />
+              <img src="../sol.png" onClick={ActiveDark} />
             )}
           </div>
           <DropDown>
-            <img src="lupa.png" onClick={searchLupa} />
+            <img src="../lupa.png" onClick={searchLupa} />
             <div className="dropMenu" ref={avtiveSearch}>
               <div className="dropBar">
                 <div>
-                  <img src="lupaN.png" />
+                  <img src="../lupaN.png" />
                   <input
                     id="auto"
                     onClick={() => setDisplay(!display)}

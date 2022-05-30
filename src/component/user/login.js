@@ -22,7 +22,7 @@ const FormLogin = () => {
 
   return (
     <div>
-      <LogIn onClick={open}><span><img src="logIn.png"/></span> Log In</LogIn>
+      <LogIn onClick={open}><span><img src="../logIn.png"/></span> Log In</LogIn>
 
       <div className="popUp-container" ref={visible}>
         <div className="popUp popUp-close" ref={popUpClose}>

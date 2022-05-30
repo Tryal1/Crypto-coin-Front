@@ -459,7 +459,40 @@ export const AccountUserContainer = styled.div`
   gap:3rem;
   width:95%;
   margin:20px auto;
-  div{
-    justify-content: space-between;
+  img{
+    width:100px;
+    height:100px
   }
+
+  .flexR,flexC{
+      display:flex;
+      align-items:center;
+      gap:2rem;
+  }
+
+  .flexR{
+    flex-direction: row;
+
+  }
+  .flexC{
+    display:flex;
+    align-items:start;
+    gap:2rem;
+    flex-direction: column;
+  }
+
+  .btn-verde{
+    background-color:#2edd2e;
+  }
+  .btn-red{
+    background-color:#ff4f4f;
+  }
+
+  .inputAcc{
+    border:1px solid #c5c5c5;
+    border-radius: 5px;
+    padding: 0 10px;
+    width:240px;
+  }
+
 `;

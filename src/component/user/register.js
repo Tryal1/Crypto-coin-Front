@@ -22,7 +22,7 @@ const Register = () => {
     <div>
       <LogIn onClick={open}>
         <span>
-          <img src="register.png" />
+          <img src="../register.png" />
         </span>{" "}
         Register
       </LogIn>

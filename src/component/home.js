@@ -23,7 +23,7 @@ const Home = () => {
 
   return (
     <Centrar>
-      <SearchBar />
+      <SearchBar/>
       <Filtros/>
       <TableData setRender={renderizar} />
     </Centrar>
