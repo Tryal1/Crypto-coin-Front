@@ -2,7 +2,6 @@
 export const coinsList =
   (divisa, cat = "", limit = 100, offset = 1) =>
   (dispatch) => {
-    console.log(cat);
     let category = "";
     if (divisa === "") {
       divisa = "usd";
@@ -97,21 +96,23 @@ export const OHLC = (coin, currency, day) => (dispatch) => {
 };
 //Back
 
-export const loginUser = (user) => (dispatch) => {
-  fetch("http://localhost:4000/auth/login", {
+export const loginUser = (user) => async (dispatch) => {
+
+  const res = await fetch("http://localhost:4000/auth/login", {
     method: "POST",
     body: JSON.stringify({ email: user.email, password: user.password }),
     headers: { "Content-Type": "application/json" },
-  })
-    .then((response) => response.json())
-    .then((data) =>
-      dispatch({
-        type: "SET_USER",
-        payload: data,
-      })
-    )
-    .then((data) => window.localStorage.setItem("xtoken", data.payload.token))
-    .catch((err) => console.log(err));
+  });
+  const data = await res.json();
+
+  if (data.token) {
+    window.localStorage.setItem("xtoken", data.token);
+    dispatch({
+      type: "SET_USER",
+      payload: data,
+    });
+  }
+  return data
 };
 
 export const registerUser = async (user) => {
@@ -126,7 +127,7 @@ export const registerUser = async (user) => {
     headers: { "Content-Type": "application/json" },
   });
   const data = await res.json();
-  console.log(data.errors)
+  console.log(data.errors);
   return data;
 };
 
@@ -137,8 +138,6 @@ export const getUser = async (uid) => {
 };
 
 export const actualizarUsuario = async (user, id) => {
-  console.log(user.name, user.password)
-  console.log(user)
   const res = await fetch(`http://localhost:4000/usuarios/${id}`, {
     method: "PUT",
     body: JSON.stringify({ name: user.name, password: user.password }),

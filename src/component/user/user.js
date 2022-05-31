@@ -36,6 +36,7 @@ const User = () => {
   const logOut = () => {
     window.localStorage.clear();
     window.location.reload();
+    window.location.replace('/')
   };
 
   return (

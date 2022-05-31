@@ -2,13 +2,14 @@ import { Field, Form, Formik } from "formik";
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../reducer/action";
-import { LogIn } from "../styled";
+import { ErrorMsj, LogIn } from "../styled";
 import TextInput from "../textInput";
 
 const FormLogin = () => {
   const popUpClose = useRef();
   const visible = useRef();
   const dispatch = useDispatch();
+  const [error, setError] = useState();
 
   const open = () => {
     popUpClose.current.classList.toggle("popUp-close");
@@ -21,20 +22,25 @@ const FormLogin = () => {
     }, 320);
   };
 
-  const validate = (values) =>{
-    const errors = {}
-    if(!values.email){
-      errors.email = 'No hay un mail ingresado'
+  const validate = (values) => {
+    const errors = {};
+    if (!values.email) {
+      errors.email = "No hay un mail ingresado";
     }
-    if(!values.password){
-      errors.password = 'La contraseña es obligatoria'
+    if (!values.password) {
+      errors.password = "La contraseña es obligatoria";
     }
-    return errors
-  }
+    return errors;
+  };
 
   return (
     <div>
-      <LogIn onClick={open}><span><img src="../logIn.png"/></span> Log In</LogIn>
+      <LogIn onClick={open}>
+        <span>
+          <img src="../logIn.png" />
+        </span>{" "}
+        Log In
+      </LogIn>
 
       <div className="popUp-container" ref={visible}>
         <div className="popUp popUp-close" ref={popUpClose}>
@@ -45,24 +51,25 @@ const FormLogin = () => {
           <Formik
             initialValues={{ email: "", password: "" }}
             validate={validate}
-            onSubmit={(values) => {
-              try{
-                dispatch(loginUser({ email: values.email, password: values.password }))
-                close()
-               setTimeout(() => {
-                  window.location.reload()
-               }, 300);
-              }catch(err){
-                console.log(err)
+            onSubmit={async (values) => {
+              const error = await dispatch(
+                loginUser({ email: values.email, password: values.password })
+              );
+              if (error.msg) {
+                setError(error);
+              } else {
+                close();
+                setTimeout(() => {
+                  window.location.reload();
+                }, 300);
               }
-              
             }}
           >
             <Form className="formulario">
               <legend>Login</legend>
               <div className="contenedor-de-cmapos">
                 <div className="campo">
-                <TextInput name="email" label="Email"/>
+                  <TextInput name="email" label="Email" />
                   {/* <Field
                     type="email"
                     name="email"
@@ -71,7 +78,8 @@ const FormLogin = () => {
                   /> */}
                 </div>
                 <div className="campo">
-                <TextInput name="password" label="Password"/>
+                  <TextInput name="password" label="Password" />
+                  {error?.msg ? <ErrorMsj>{error?.msg}</ErrorMsj> : null}
                   {/* <Field
                     type="password"
                     name="password"

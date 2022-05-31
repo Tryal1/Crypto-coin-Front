@@ -1,12 +1,13 @@
 import { Field, Form, Formik } from "formik";
 import { useRef, useState } from "react";
 import { loginUser, registerUser } from "../../reducer/action";
-import { LogIn } from "../styled";
+import { ErrorMsj, LogIn } from "../styled";
 import TextInput from "../textInput";
 
 const Register = () => {
   const popUpClose = useRef();
   const visible = useRef();
+  const [error,setError] = useState()
 
   const open = () => {
     popUpClose.current.classList.toggle("popUp-close");
@@ -20,8 +21,6 @@ const Register = () => {
   };
 
   const validate = async (values) => {
-    console.log(values);
-
     const errors = {};
     if (!values.name) {
       errors.name = "El nombre es obligatorio";
@@ -32,9 +31,6 @@ const Register = () => {
     if (!values.password) {
       errors.password = "La contraseña es obligatoria";
     }
-    if (values.password.length < 6) {
-      errors.password = "La contraseñadebe tener almenos 6 caracteres";
-    }
     return errors;
   };
 
@@ -43,7 +39,7 @@ const Register = () => {
       <LogIn onClick={open}>
         <span>
           <img src="../register.png" />
-        </span>{" "}
+        </span>
         Register
       </LogIn>
 
@@ -61,8 +57,8 @@ const Register = () => {
               rol: "USER_ROLE",
             }}
             validate={validate}
-            onSubmit={(values) => {
-              registerUser(values);
+            onSubmit={async (values) => {
+             setError(await registerUser(values));
             }}
           >
             <Form className="formulario">
@@ -79,6 +75,11 @@ const Register = () => {
                 </div>
                 <div className="campo">
                   <TextInput name="email" label="Email" />
+                  {error?.errors?.map(e => {
+                    if(e.param === 'email'){
+                      return(<ErrorMsj>{e.msg}</ErrorMsj>)
+                    }
+                  })}
                   {/* <Field
                     type="email"
                     name="email"
@@ -88,6 +89,12 @@ const Register = () => {
                 </div>
                 <div className="campo">
                   <TextInput name="password" label="Password" />
+                  {error?.errors?.map(e => {
+                    console.log(e.param)
+                    if(e.param === "password"){
+                      return(<ErrorMsj>{e.msg}</ErrorMsj>)
+                    }
+                  })}
                   {/* <Field
                     type="password"
                     name="password"
