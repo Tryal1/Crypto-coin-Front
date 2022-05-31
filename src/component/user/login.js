@@ -24,8 +24,12 @@ const FormLogin = () => {
   const validate = (values) =>{
     const errors = {}
     if(!values.email){
-      errors.email = 'No hay nombre'
+      errors.email = 'No hay un mail ingresado'
     }
+    if(!values.password){
+      errors.password = 'La contraseña es obligatoria'
+    }
+    return errors
   }
 
   return (

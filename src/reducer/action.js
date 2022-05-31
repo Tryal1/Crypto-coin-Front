@@ -126,7 +126,7 @@ export const registerUser = async (user) => {
     headers: { "Content-Type": "application/json" },
   });
   const data = await res.json();
-  console.log(data)
+  console.log(data.errors)
   return data;
 };
 

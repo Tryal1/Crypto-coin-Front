@@ -496,3 +496,12 @@ export const AccountUserContainer = styled.div`
   }
 
 `;
+
+// error msj
+
+export const ErrorMsj = styled.div`
+  color:#ff0000;
+  font-size:12px;
+  text-align:start;
+  margin-left:20px;
+`

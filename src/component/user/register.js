@@ -19,6 +19,25 @@ const Register = () => {
     }, 320);
   };
 
+  const validate = async (values) => {
+    console.log(values);
+
+    const errors = {};
+    if (!values.name) {
+      errors.name = "El nombre es obligatorio";
+    }
+    if (!values.email) {
+      errors.email = "No hay un mail ingresado";
+    }
+    if (!values.password) {
+      errors.password = "La contraseña es obligatoria";
+    }
+    if (values.password.length < 6) {
+      errors.password = "La contraseñadebe tener almenos 6 caracteres";
+    }
+    return errors;
+  };
+
   return (
     <div>
       <LogIn onClick={open}>
@@ -41,6 +60,7 @@ const Register = () => {
               password: "",
               rol: "USER_ROLE",
             }}
+            validate={validate}
             onSubmit={(values) => {
               registerUser(values);
             }}
@@ -49,7 +69,7 @@ const Register = () => {
               <legend>Register</legend>
               <div className="contenedor-de-cmapos">
                 <div className="campo">
-                <TextInput name="name" label="Name"/>
+                  <TextInput name="name" label="Name" />
                   {/* <Field
                     type="name"
                     name="name"
@@ -58,7 +78,7 @@ const Register = () => {
                   /> */}
                 </div>
                 <div className="campo">
-                <TextInput name="email" label="Email"/>
+                  <TextInput name="email" label="Email" />
                   {/* <Field
                     type="email"
                     name="email"
@@ -67,7 +87,7 @@ const Register = () => {
                   /> */}
                 </div>
                 <div className="campo">
-                <TextInput name="password" label="Password"/>
+                  <TextInput name="password" label="Password" />
                   {/* <Field
                     type="password"
                     name="password"

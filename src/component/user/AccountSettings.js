@@ -30,6 +30,20 @@ const AccountSettings = () => {
     }
   };
 
+  const validate = async (values) => {
+    console.log(values);
+
+    const errors = {};
+
+    if (!values.password) {
+      errors.password = "La contraseña es obligatoria";
+    }
+    if (values.password.length < 6) {
+      errors.password = "La contraseñadebe tener almenos 6 caracteres";
+    }
+    return errors;
+  };
+
   return (
     <div>
       <div>
@@ -55,6 +69,7 @@ const AccountSettings = () => {
           <h3>Change password</h3>
           <Formik
             initialValues={{ password: "", password2: "" }}
+            validate={validate}
             onSubmit={(values) => {
               if(values.password === values.password2){
                 dispatch(actualizarUsuario({password:values.password}, user.uid));
@@ -63,13 +78,13 @@ const AccountSettings = () => {
           >
             <Form className="flexC">
               <div className="flexC">
-                {/* <TextInput name="password"/> */}
-                <Field
+                <TextInput name="password" label="Password"/>
+                {/* <Field
                   type="password"
                   name="password"
                   placeholder="New Password"
                   className="inputAcc"
-                />
+                /> */}
 
                 <Field
                   type="password"
