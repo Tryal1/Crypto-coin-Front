@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../reducer/action";
 import { LogIn } from "../styled";
+import TextInput from "../textInput";
 
 const FormLogin = () => {
   const popUpClose = useRef();
@@ -20,6 +21,13 @@ const FormLogin = () => {
     }, 320);
   };
 
+  const validate = (values) =>{
+    const errors = {}
+    if(!values.email){
+      errors.email = 'No hay nombre'
+    }
+  }
+
   return (
     <div>
       <LogIn onClick={open}><span><img src="../logIn.png"/></span> Log In</LogIn>
@@ -32,6 +40,7 @@ const FormLogin = () => {
 
           <Formik
             initialValues={{ email: "", password: "" }}
+            validate={validate}
             onSubmit={(values) => {
               try{
                 dispatch(loginUser({ email: values.email, password: values.password }))
@@ -49,20 +58,22 @@ const FormLogin = () => {
               <legend>Login</legend>
               <div className="contenedor-de-cmapos">
                 <div className="campo">
-                  <Field
+                <TextInput name="email" label="Email"/>
+                  {/* <Field
                     type="email"
                     name="email"
                     placeholder="Email"
                     className="imput-text"
-                  />
+                  /> */}
                 </div>
                 <div className="campo">
-                  <Field
+                <TextInput name="password" label="Password"/>
+                  {/* <Field
                     type="password"
                     name="password"
                     placeholder="Password"
                     className="imput-text"
-                  />
+                  /> */}
                 </div>
               </div>
               <div className="enviar">

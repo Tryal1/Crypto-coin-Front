@@ -4,6 +4,7 @@ import SearchBar from "../searchBar";
 import { useState } from "react";
 import { actualizarUsuario } from "../../reducer/action";
 import { Field, Form, Formik } from "formik";
+import TextInput from '../textInput'
 
 const AccountSettings = () => {
   const [changeUser, setChangeUser] = useState({ name: "", password: "" });
@@ -62,6 +63,7 @@ const AccountSettings = () => {
           >
             <Form className="flexC">
               <div className="flexC">
+                {/* <TextInput name="password"/> */}
                 <Field
                   type="password"
                   name="password"

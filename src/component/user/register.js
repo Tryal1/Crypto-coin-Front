@@ -2,6 +2,7 @@ import { Field, Form, Formik } from "formik";
 import { useRef, useState } from "react";
 import { loginUser, registerUser } from "../../reducer/action";
 import { LogIn } from "../styled";
+import TextInput from "../textInput";
 
 const Register = () => {
   const popUpClose = useRef();
@@ -48,28 +49,31 @@ const Register = () => {
               <legend>Register</legend>
               <div className="contenedor-de-cmapos">
                 <div className="campo">
-                  <Field
+                <TextInput name="name" label="Name"/>
+                  {/* <Field
                     type="name"
                     name="name"
                     placeholder="Name"
                     className="imput-text"
-                  />
+                  /> */}
                 </div>
                 <div className="campo">
-                  <Field
+                <TextInput name="email" label="Email"/>
+                  {/* <Field
                     type="email"
                     name="email"
                     placeholder="Email"
                     className="imput-text"
-                  />
+                  /> */}
                 </div>
                 <div className="campo">
-                  <Field
+                <TextInput name="password" label="Password"/>
+                  {/* <Field
                     type="password"
                     name="password"
                     placeholder="Password"
                     className="imput-text"
-                  />
+                  /> */}
                 </div>
               </div>
               <div className="enviar">
