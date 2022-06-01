@@ -59,7 +59,7 @@ const SearchBar = () => {
             </select>
           </div>
           <div className="toggle-btn" onClick={leftBar}>
-            <img src="hamburge.png" alt="Logo Fazt" className="logo" />
+            <img src="../hamburge.png" alt="Logo Fazt" className="logo" />
           </div>
         </div>
         <div className="barraDerecha" ref={leftActive}>

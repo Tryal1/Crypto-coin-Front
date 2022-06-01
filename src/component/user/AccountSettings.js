@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AccountUserContainer } from "../styled";
 import SearchBar from "../searchBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { actualizarUsuario } from "../../reducer/action";
 import { Field, Form, Formik } from "formik";
 import TextInput from '../textInput'
+import { func } from "./user";
 
 const AccountSettings = () => {
   const [changeUser, setChangeUser] = useState({ name: "", password: "" });
@@ -44,6 +45,10 @@ const AccountSettings = () => {
     return errors;
   };
 
+  useEffect(() => {
+    dispatch(func());
+  }, []);
+
   return (
     <div>
       <div>
@@ -58,7 +63,7 @@ const AccountSettings = () => {
           <input
             className="inputAcc"
             onChange={changeName}
-            placeholder={user.name.toUpperCase()}
+            placeholder={user?.name?.toUpperCase()}
           />
           <input className="inputAcc" disabled value={user.email} />
           <button className="btn btn-verde" onClick={saveChange}>

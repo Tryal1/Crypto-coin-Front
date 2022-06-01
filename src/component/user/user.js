@@ -4,6 +4,23 @@ import { Link } from "react-router-dom";
 import { getUser } from "../../reducer/action";
 import { AcountContainer } from "../styled";
 
+export const func = () => (dispatch) => {
+  fetch(`http://localhost:4000/usuarios`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      xtoken: localStorage.getItem("xtoken"),
+    },
+  })
+    .then((response) => response.json())
+    .then((data) =>
+      dispatch({
+        type: "SET_USER",
+        payload: data,
+      })
+    );
+};
+
 const User = () => {
   const active = useRef();
   const dispatch = useDispatch();
@@ -12,22 +29,6 @@ const User = () => {
     active.current.classList.toggle("active");
   };
 
-  const func = () => (dispatch) => {
-    fetch(`http://localhost:4000/usuarios`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        xtoken: localStorage.getItem("xtoken"),
-      },
-    })
-      .then((response) => response.json())
-      .then((data) =>
-        dispatch({
-          type: "SET_USER",
-          payload: data,
-        })
-      );
-  };
 
   useEffect(() => {
     dispatch(func());

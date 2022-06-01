@@ -456,6 +456,7 @@ export const AcountContainer = styled.div`
 export const AccountUserContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items:center;
   gap:3rem;
   width:95%;
   margin:20px auto;
@@ -472,6 +473,7 @@ export const AccountUserContainer = styled.div`
 
   .flexR{
     flex-direction: row;
+    justify-content: space-evenly;
 
   }
   .flexC{
