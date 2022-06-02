@@ -94,7 +94,8 @@ export const OHLC = (coin, currency, day) => (dispatch) => {
     )
     .catch((err) => console.log(err));
 };
-//Back
+
+//Back user
 
 export const loginUser = (user) => async (dispatch) => {
 
@@ -145,4 +146,24 @@ export const actualizarUsuario = async (user, id) => {
   });
   const data = await res.json();
   return data;
+};
+
+// Back my coins
+
+export const getMyCoins = async (uid) => {
+  const res = await fetch(`http://localhost:4000/mycoins`);
+  const data = await res.json()
+  const newData = []
+  data.coins.forEach(data => {
+    if(data.usuario._id === uid){
+      newData.push(data)
+    }
+  });
+  return newData;
+};
+
+export const myCoinsData = async (name) =>{
+  const res = await fetch(`https://api.coingecko.com/api/v3/coins/${name}`)
+  const data = await res.json()
+  return data
 };

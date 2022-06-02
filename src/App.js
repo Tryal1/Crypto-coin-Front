@@ -3,6 +3,7 @@ import Home from "./component/home";
 import "./App.css";
 import Info from "./component/info";
 import AccountSettings from "./component/user/AccountSettings";
+import Portfolio from "./component/user/portfolio";
 function App() {
   return (
     <div>
@@ -16,6 +17,9 @@ function App() {
           </Route>
           <Route path={"/user/:id"}>
             <AccountSettings />
+          </Route>
+          <Route path={"/portfolio"}>
+            <Portfolio/>
           </Route>
         </Switch>
       </BrowserRouter>

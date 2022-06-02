@@ -1,20 +1,22 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { categoryCoin, SetCategory } from "../reducer/action";
 import { ButtonFiltro, FiltrosContainer } from "./styled";
 
 const Filtros = () => {
+  const [catActual, setCatActual] = useState('All Category')
   const Category = useSelector((e) => e.category);
   const dispatch = useDispatch()
-
+  
   const activo = useRef();
 
   const active = () => {
-    activo.current?.classList.toggle("active");
+    activo.current?.classList?.toggle("active");
   };
 
   const category = (e) =>{
-    dispatch(SetCategory(e))
+    setCatActual(e.name)
+    dispatch(SetCategory(e.category_id))
   }
 
   useEffect(() => {
@@ -24,11 +26,12 @@ const Filtros = () => {
   return (
     <FiltrosContainer>
       <div className="ulContainer">
-        <ButtonFiltro onClick={active}>All Category</ButtonFiltro>
+        <ButtonFiltro onClick={active}>{catActual}</ButtonFiltro>
         <div>
           <ul className="ulFiltros" ref={activo}>
+            <li onClick={()=>category()}>All Category</li>
             {Category.map((e) => (
-              <li onClick={()=>category(e.category_id)} >{e.name}</li>
+              <li onClick={()=>category(e)} >{e.name}</li>
             ))}
           </ul>
         </div>

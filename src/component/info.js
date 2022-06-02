@@ -73,7 +73,7 @@ const Info = () => {
                   >
                     {coin.market_data?.price_change_percentage_24h_in_currency[
                       divisas
-                    ].toFixed(2)}
+                    ].toFixed(2)}%
                   </PorcenSpan>
                 </h2>
               </div>

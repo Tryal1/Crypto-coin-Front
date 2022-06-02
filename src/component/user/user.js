@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getUser } from "../../reducer/action";
 import { AcountContainer } from "../styled";
 
 export const func = () => (dispatch) => {
@@ -49,9 +48,9 @@ const User = () => {
           <h3>{user?.name?.toUpperCase()}</h3>
         </div>
         <div className="accountEnlaces flex">
-          <a href="#">PortFolio</a>
+          <Link to={`/portfolio`}>PortFolio</Link>
           <Link to={`/user/${user?.name}`}>Account Settings</Link>
-          <a href="#" onClick={logOut}>
+          <a onClick={logOut}>
             Log Out
           </a>
         </div>

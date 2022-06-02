@@ -456,54 +456,178 @@ export const AcountContainer = styled.div`
 export const AccountUserContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items:center;
-  gap:3rem;
-  width:95%;
-  margin:20px auto;
-  img{
-    width:100px;
-    height:100px
+  align-items: center;
+  gap: 3rem;
+  width: 95%;
+  margin: 20px auto;
+  img {
+    width: 100px;
+    height: 100px;
   }
 
-  .flexR,flexC{
-      display:flex;
-      align-items:center;
-      gap:2rem;
+  .flexR,
+  flexC {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
   }
 
-  .flexR{
+  .flexR {
     flex-direction: row;
     justify-content: space-evenly;
-
   }
-  .flexC{
-    display:flex;
-    align-items:start;
-    gap:2rem;
+  .flexC {
+    display: flex;
+    align-items: start;
+    gap: 2rem;
     flex-direction: column;
   }
 
-  .btn-verde{
-    background-color:#2edd2e;
+  .btn-verde {
+    background-color: #2edd2e;
   }
-  .btn-red{
-    background-color:#ff4f4f;
+  .btn-red {
+    background-color: #ff4f4f;
   }
 
-  .inputAcc{
-    border:1px solid #c5c5c5;
+  .inputAcc {
+    border: 1px solid #c5c5c5;
     border-radius: 5px;
     padding: 0 10px;
-    width:240px;
+    width: 240px;
   }
-
 `;
 
 // error msj
 
 export const ErrorMsj = styled.div`
-  color:#ff0000;
-  font-size:12px;
-  text-align:start;
-  margin-left:20px;
-`
+  color: #ff0000;
+  font-size: 12px;
+  text-align: start;
+  margin-left: 20px;
+`;
+
+// PortFolio
+
+export const BalanceContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 30px;
+
+  .balance {
+    padding: 30px 0;
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+    }
+  }
+`;
+
+export const AddnewCoin = styled.div`
+
+  .add-button {
+    background-color: #3861fb;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 15px;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .contenido-Add {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  .add-img {
+    width: 20px;
+    height: 20px;
+  }
+  .add-input {
+    border: 1px solid #c5c5c5;
+    border-radius: 8px;
+    padding: 0 25px;
+    width: 100%;
+    outline: none;
+  }
+  .add-ul {
+    height: 400px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+  }
+
+  .add-button-list {
+    text-align: start;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    width: 100%;
+  }
+
+  .add-titulo {
+    margin-top: 5px;
+    font-size: 27px;
+    font-weight: bold;
+  }
+
+  .add-search {
+    position: relative;
+    display: flex;
+    width: 100%;
+    padding-top:20px;
+  }
+
+  .add-svg {
+    position: absolute;
+    top: 40%;
+    left: 5px;
+  }
+
+  .contenido-transaction {
+    display: flex;
+    gap: 2rem;
+    padding: 30px 0;
+    p {
+      margin-bottom: 8px;
+      line-height: 1.5;
+      color: rgb(0, 0, 0);
+      font-weight: 500;
+      font-size: 14px;
+    }
+  }
+
+  .input-transaction{
+    border: 1px solid #c5c5c5;
+    border-radius: 8px;
+    outline: none;
+    padding: 8px 13px;
+    width:100%;
+  }
+
+  .transaction-spnt{
+    padding-bottom:10px;
+    p{
+      margin-bottom: 8px;
+      line-height: 1.5;
+      color: rgb(0, 0, 0);
+      font-weight: 500;
+      font-size: 14px;
+    }
+    h3{
+      font-size: 32px;
+      font-weight: 700;
+    }
+  }
+
+  .transaction-btn{
+    button{
+      width:100%;
+    }
+    padding-bottom:20px;
+  }
+
+`;
