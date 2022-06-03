@@ -12,9 +12,10 @@ const TablePortfolio = ({ myCoins}) => {
     setData(await myCoinsData(myCoins.name));
   }, [myCoins]);
 
+
   return (
     <tr>
-      <Td>{data?.name}</Td>
+      <Td><span><img src={data?.image?.small} /></span>{data?.name}</Td>
       <Td>${data?.market_data?.current_price?.usd}</Td>
       <TdColor porsen={data?.price_change_percentage_24h}>
         {data?.market_data.price_change_percentage_24h?.toFixed(2)}%

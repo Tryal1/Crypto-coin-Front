@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getMyCoins } from "../../reducer/action";
+import { getMyCoins, coinsList} from "../../reducer/action";
 import { Table, Td, Thead, Tr, BalanceContainer } from "../styled";
 import TablePortfolio from "./tablePortfolio";
 import { func } from "./user";
@@ -25,7 +25,8 @@ const Portfolio = () => {
 
   useEffect(() => {
     dispatch(func());
-  }, []);
+    dispatch(coinsList("usd"));
+  }, [dispatch]);
 
   useEffect(async () => {
     setMycoins(await getMyCoins(user.uid));

@@ -37,6 +37,7 @@ const AddNew = () => {
 
   const cargarTransacsion = () => {
     dispatch(crearMyCoins(coinA.id, quantity, price,user.uid));
+    close()
   };
 
   return (
