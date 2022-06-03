@@ -9,7 +9,6 @@ const Convert = ({coin}) => {
   const [exchangeRate, setExchangeRate] = useState();
   const [amountInFromCurrency, setAmountInFromCurrency] = useState(true);
 
-  console.log(toCurrency)
 
   let fromAmount, toAmount;
 

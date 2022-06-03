@@ -90,7 +90,6 @@ const Register = () => {
                 <div className="campo">
                   <TextInput name="password" label="Password" />
                   {error?.errors?.map(e => {
-                    console.log(e.param)
                     if(e.param === "password"){
                       return(<ErrorMsj>{e.msg}</ErrorMsj>)
                     }

@@ -11,7 +11,6 @@ const TablePortfolio = ({ myCoins}) => {
   useEffect(async () => {
     setData(await myCoinsData(myCoins.name));
   }, [myCoins]);
-  console.log(data)
 
   return (
     <tr>

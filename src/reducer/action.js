@@ -98,7 +98,6 @@ export const OHLC = (coin, currency, day) => (dispatch) => {
 //Back user
 
 export const loginUser = (user) => async (dispatch) => {
-
   const res = await fetch("http://localhost:4000/auth/login", {
     method: "POST",
     body: JSON.stringify({ email: user.email, password: user.password }),
@@ -113,7 +112,7 @@ export const loginUser = (user) => async (dispatch) => {
       payload: data,
     });
   }
-  return data
+  return data;
 };
 
 export const registerUser = async (user) => {
@@ -128,7 +127,6 @@ export const registerUser = async (user) => {
     headers: { "Content-Type": "application/json" },
   });
   const data = await res.json();
-  console.log(data.errors);
   return data;
 };
 
@@ -152,18 +150,40 @@ export const actualizarUsuario = async (user, id) => {
 
 export const getMyCoins = async (uid) => {
   const res = await fetch(`http://localhost:4000/mycoins`);
-  const data = await res.json()
-  const newData = []
-  data.coins.forEach(data => {
-    if(data.usuario._id === uid){
-      newData.push(data)
+  const data = await res.json();
+  const newData = [];
+  data.coins.forEach((data) => {
+    if (data.usuario._id === uid) {
+      newData.push(data);
     }
   });
   return newData;
 };
 
-export const myCoinsData = async (name) =>{
-  const res = await fetch(`https://api.coingecko.com/api/v3/coins/${name}`)
-  const data = await res.json()
-  return data
+export const crearMyCoins = async (name, amount, price, usuario) => {
+  const res = await fetch("http://localhost:4000/mycoins", {
+    method: "POST",
+    body: JSON.stringify({
+      name,
+      coin: [
+        {
+          amount,
+          price,
+        },
+      ],
+      usuario,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+      xtoken: localStorage.getItem("xtoken"),
+    },
+  });
+  const data = await res.json();
+  return data;
+};
+
+export const myCoinsData = async (name) => {
+  const res = await fetch(`https://api.coingecko.com/api/v3/coins/${name}`);
+  const data = await res.json();
+  return data;
 };

@@ -51,7 +51,6 @@ function Graficos({chartID,coin,currency,day}) {
             value:e[1],
           })
         })
-        console.log(chartData)
 
         
         // Create axes

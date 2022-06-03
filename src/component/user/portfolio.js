@@ -51,8 +51,8 @@ const Portfolio = () => {
           </Tr>
         </Thead>
         <tbody>
-          {myCoins?.map((myCoins) => (
-            <TablePortfolio key={myCoins.id} myCoins={myCoins} />
+          {myCoins?.map((myCoins,i) => (
+            <TablePortfolio key={i} myCoins={myCoins} />
           ))}
         </tbody>
       </Table>

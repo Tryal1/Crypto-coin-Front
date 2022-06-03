@@ -17,7 +17,7 @@ export const func = () => (dispatch) => {
         type: "SET_USER",
         payload: data,
       })
-    );
+    )
 };
 
 const User = () => {
