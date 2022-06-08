@@ -39,6 +39,11 @@ const SearchBar = () => {
     avtiveSearch.current.classList.toggle("active");
   };
 
+  const buscar = (e) => {
+    console.log(e);
+    // window.location.href(`/coin/${value.id}`)
+  };
+
   return (
     <BarraContainer>
       <Barra>
@@ -92,7 +97,7 @@ const SearchBar = () => {
                     value={search}
                     onChange={(event) => setSearch(event.target.value)}
                   />
-                  {display && (
+                  {display ? (
                     <div className="container">
                       {coins
                         .filter((coins) =>
@@ -108,7 +113,7 @@ const SearchBar = () => {
                               tabIndex="0"
                               className="option"
                             >
-                              <Link to={`/${value.id}`}>
+                              <Link to={`/coin/${value.id}`}>
                                 <img src={value.image} alt="Crypto" />
                                 <span>{value.name}</span>
                               </Link>
@@ -116,10 +121,12 @@ const SearchBar = () => {
                           );
                         })}
                     </div>
-                  )}
+                  ) : null}
                 </div>
-                <button type="submit">Search</button>
-              </div>
+                <button type="submit" onClick={buscar}>
+                  Search
+                </button>   
+             </div>
             </div>
           </DropDown>
         </div>

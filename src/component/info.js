@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Divisas, searchCoin, SetDivisa } from "../reducer/action";
+import { coinsList, Divisas, searchCoin, SetDivisa } from "../reducer/action";
 import Convert from "./convert";
 import Graficos from "./graficos";
 import SearchBar from "./searchBar";
@@ -28,12 +28,13 @@ const Info = () => {
 
   useEffect(() => {
     dispatch(searchCoin(id));
-  }, [dispatch, id]);
+  }, [dispatch,url,id]);
 
   useEffect(() => {
+    dispatch(coinsList(divisas));
     dispatch(Divisas());
     dispatch(SetDivisa(divisas));
-  }, [dispatch, divisas]);
+  }, [dispatch, divisas,id]);
 
   const FormatNumber = (number) => {
     return new Intl.NumberFormat("en-US", {

@@ -160,30 +160,58 @@ export const getMyCoins = async (uid) => {
   return newData;
 };
 
-export const crearMyCoins = async (name, amount, price, usuario) => {
-  const res = await fetch("http://localhost:4000/mycoins", {
+export const crearMyCoins =  (name, amount, price, usuario) => {
+  fetch("http://localhost:4000/mycoins", {
     method: "POST",
     body: JSON.stringify({
       name,
-      coin: [
+      coin:
         {
-          amount,
-          price,
+          amount : Number(amount),
+          price: Number(price)
         },
-      ],
       usuario,
     }),
     headers: {
       "Content-Type": "application/json",
       xtoken: localStorage.getItem("xtoken"),
     },
-  });
-  const data = await res.json();
-  return data;
+  })
+  .then((response) => response.json())
+  .then((data) =>{return data})
+};
+
+export const modifMyCoins =  (data, amount, usuario) => {
+  fetch(`http://localhost:4000/mycoins/${data.id}`, {
+    method: "PUT",
+    body: JSON.stringify({
+      name:data.name,
+      coin:
+        {
+          amount : Number(amount),
+          price: Number(data.avg)
+        },
+      usuario,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+      xtoken: localStorage.getItem("xtoken"),
+    },
+  })
+  .then((response) => response.json())
+  .then((data) =>{return data})
 };
 
 export const myCoinsData = async (name) => {
   const res = await fetch(`https://api.coingecko.com/api/v3/coins/${name}`);
   const data = await res.json();
   return data;
+};
+
+
+export const setMycoins = (payload) => (dispatch) =>{
+  dispatch({
+    type: "SET_MYCOINS",
+    payload: payload,
+  })
 };

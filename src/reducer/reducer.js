@@ -4,14 +4,14 @@ const intialState = {
   allCoins: [],
   coins: [],
   category: [],
-  setCategory:'',
+  setCategory: "",
   divisas: "",
   alldivisas: [],
   info: [],
   ohlc: [],
   user: [],
+  myCoins: [],
 };
-
 const Reducer = (state = intialState, { type, payload }) => {
   switch (type) {
     case "SET_USER":
@@ -20,6 +20,11 @@ const Reducer = (state = intialState, { type, payload }) => {
         ...state,
         user: rest,
       };
+    case "SET_MYCOINS":
+      return {
+        ...state,
+        myCoins: [...state.myCoins,payload]
+      }
     case "GET_CRYPTO":
       return {
         ...state,

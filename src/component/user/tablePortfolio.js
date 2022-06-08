@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { myCoinsData } from "../../reducer/action";
+import { useDispatch } from "react-redux";
+import { myCoinsData, setMycoins } from "../../reducer/action";
 import { Td, TdColor, TrAnimation } from "../styled";
 
-const TablePortfolio = ({ myCoins}) => {
+const TablePortfolio = ({ myCoins,open,setReaload,reload}) => {
   const [data, setData] = useState();
-  let price = 0;
-  let amount = 0;
-  let profit = 0;
+  const dispatch = useDispatch()
   useEffect(async () => {
     setData(await myCoinsData(myCoins.name));
   }, [myCoins]);
 
-
+  useEffect(()=>{
+    let resul = myCoins.coin.amount * data?.market_data?.current_price?.usd
+    if(!isNaN(resul)){
+      dispatch(setMycoins({ name:data.name, price:resul}))
+    }
+  },[dispatch,myCoins])
   return (
     <tr>
       <Td><span><img src={data?.image?.small} /></span>{data?.name}</Td>
@@ -23,33 +26,27 @@ const TablePortfolio = ({ myCoins}) => {
       <Td>
         $
         {
-          (myCoins?.coin?.map((coin) => {
-            amount = coin.amount + amount;
-          }),
-          amount * data?.market_data?.current_price?.usd)
+          myCoins.coin.amount * data?.market_data?.current_price?.usd.toFixed(2)
         }
         <br />
-        <span>{amount}</span>
+        <span>{myCoins.coin.amount}</span>
       </Td>
       <Td>
         $
         {
-          (myCoins.coin.map((coin) => {
-            price = coin.price + price;
-          }),
-          (price = price / amount))
+          (myCoins.coin.price / myCoins.coin.amount).toFixed(2)
         }
       </Td>
-      <TdColor porsen={amount * data?.market_data?.current_price?.usd - (price * amount)}>
+      <TdColor porsen={myCoins.coin.amount * data?.market_data?.current_price?.usd - (myCoins.coin.price * myCoins.coin.amount)}>
         $
         {
-         profit = (amount * data?.market_data?.current_price?.usd - (price * amount)).toFixed(2)
+         (myCoins.coin.amount * data?.market_data?.current_price?.usd - (myCoins.coin.price * myCoins.coin.amount)).toFixed(2)
         }
         {
          
         }
       </TdColor>
-      <Td>+ -</Td>
+      <Td><p onClick={()=>open(data.name, myCoins._id,(myCoins.coin.price / myCoins.coin.amount))}>-</p></Td>
     </tr>
   );
 };

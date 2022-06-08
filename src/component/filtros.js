@@ -23,13 +23,17 @@ const Filtros = () => {
     dispatch(categoryCoin());
   }, [dispatch]);
 
+  if(!catActual){
+    setCatActual('All Category')
+  }
+
   return (
     <FiltrosContainer>
       <div className="ulContainer">
         <ButtonFiltro onClick={active}>{catActual}</ButtonFiltro>
         <div>
           <ul className="ulFiltros" ref={activo}>
-            <li onClick={()=>category()}>All Category</li>
+            <li onClick={()=>category('')}>All Category</li>
             {Category.map((e) => (
               <li onClick={()=>category(e)} >{e.name}</li>
             ))}

@@ -19,21 +19,26 @@ export const Thead = styled.thead`
 
 export const Td = styled.td`
   padding: 1.3rem;
+  text-align: start;
   .container {
     margin: auto;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    img {
-      width: 20px;
-      height: 20px;
-    }
   }
   .contenido {
     font-weight: 700;
     span {
       font-weight: 400;
     }
+  }
+  img {
+    width: 20px;
+    height: 20px;
+  }
+  *{
+    text-decoration:none;
+    color:#212529;
   }
 `;
 export const TdColor = styled(Td)`
@@ -309,6 +314,9 @@ export const DropDown = styled.div`
       padding: 6px 12px;
     }
   }
+  button{
+    heigth:36px;
+  }
 `;
 
 // LOGIN
@@ -525,7 +533,6 @@ export const BalanceContainer = styled.div`
 `;
 
 export const AddnewCoin = styled.div`
-
   .add-button {
     background-color: #3861fb;
     border: none;
@@ -578,7 +585,7 @@ export const AddnewCoin = styled.div`
     position: relative;
     display: flex;
     width: 100%;
-    padding-top:20px;
+    padding-top: 20px;
   }
 
   .add-svg {
@@ -600,34 +607,33 @@ export const AddnewCoin = styled.div`
     }
   }
 
-  .input-transaction{
+  .input-transaction {
     border: 1px solid #c5c5c5;
     border-radius: 8px;
     outline: none;
     padding: 8px 13px;
-    width:100%;
+    width: 100%;
   }
 
-  .transaction-spnt{
-    padding-bottom:10px;
-    p{
+  .transaction-spnt {
+    padding-bottom: 10px;
+    p {
       margin-bottom: 8px;
       line-height: 1.5;
       color: rgb(0, 0, 0);
       font-weight: 500;
       font-size: 14px;
     }
-    h3{
+    h3 {
       font-size: 32px;
       font-weight: 700;
     }
   }
 
-  .transaction-btn{
-    button{
-      width:100%;
+  .transaction-btn {
+    button {
+      width: 100%;
     }
-    padding-bottom:20px;
+    padding-bottom: 20px;
   }
-
 `;
